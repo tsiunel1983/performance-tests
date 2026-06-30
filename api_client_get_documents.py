@@ -27,7 +27,7 @@ get_tariff_document_response = tariff_documents_gateway_client.get_contract_docu
     account_id = open_credit_card_account_response["account"]["id"])
 """
 Используем метод get_contract_document
-Получаем документ о тарифе кредитного счета
+Получаем документ о тарифе кредитного счета.
 """
 print("Get tariff document response: ", get_tariff_document_response)
 
@@ -35,6 +35,6 @@ get_contract_document_response = contract_documents_gateway_client.get_contract_
     account_id = open_credit_card_account_response["account"]["id"])
 """
 Используем метод get_contract_document
-Получаем контракт об открытии кредитного счета
+Получаем контракт об открытии кредитного счета.
 """
 print("Get contract document response: ", get_contract_document_response)
