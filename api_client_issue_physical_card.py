@@ -7,14 +7,26 @@ users_gateway_client = build_users_gateway_http_client()
 cards_gateway_client = build_cards_gateway_http_client()
 accounts_gateway_client = build_accounts_gateway_http_client()
 
+"""
+Используем метод create_user
+Создаем пользователя
+"""
 create_user_response = users_gateway_client.create_user()
 print("Create user response: ",create_user_response)
 
+"""
+Используем метод open_debit_card_account
+Открываем дебитовый счет
+"""
 open_debit_card_account_response = accounts_gateway_client.open_debit_card_account(
     user_id=create_user_response["user"]["id"],
 )
 print("Open debit card account response: ",open_debit_card_account_response)
 
+"""
+Используем метод issue_physical_card
+Выпускаем физическую карту
+"""
 issue_physical_card_response = cards_gateway_client.issue_physical_card(
     user_id=create_user_response["user"]["id"],
     account_id=open_debit_card_account_response["account"]["id"],
