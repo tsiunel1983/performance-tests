@@ -16,7 +16,7 @@ create_user_response = users_gateway_client.create_user()
 print("Create user response: ", create_user_response)
 
 open_credit_card_account_response = accounts_gateway_client.open_credit_card_account(
-    user_id=create_user_response["user"]["id"])
+    user_id=create_user_response.user.id)
 """
 Используем метод open_credit_card_account
 Открываем кредитный счет
@@ -24,7 +24,7 @@ open_credit_card_account_response = accounts_gateway_client.open_credit_card_acc
 print("Open credit card account response: ", open_credit_card_account_response)
 
 get_tariff_document_response = tariff_documents_gateway_client.get_contract_document(
-    account_id = open_credit_card_account_response["account"]["id"])
+    account_id = open_credit_card_account_response.account.id)
 """
 Используем метод get_contract_document
 Получаем документ о тарифе кредитного счета.
@@ -32,7 +32,7 @@ get_tariff_document_response = tariff_documents_gateway_client.get_contract_docu
 print("Get tariff document response: ", get_tariff_document_response)
 
 get_contract_document_response = contract_documents_gateway_client.get_contract_document(
-    account_id = open_credit_card_account_response["account"]["id"])
+    account_id = open_credit_card_account_response.account.id)
 """
 Используем метод get_contract_document
 Получаем контракт об открытии кредитного счета.
