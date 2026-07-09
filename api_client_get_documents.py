@@ -23,14 +23,16 @@ open_credit_card_account_response = accounts_gateway_client.open_credit_card_acc
 """
 print("Open credit card account response: ", open_credit_card_account_response)
 
-get_tariff_document_response = tariff_documents_gateway_client.get_tariff_document(account_id=open_credit_card_account_response.account.id)
+get_tariff_document_response = tariff_documents_gateway_client.get_tariff_document(
+    account_id=open_credit_card_account_response.account.id)
 """
 Используем метод get_contract_document
 Получаем документ о тарифе кредитного счета.
 """
 print("Get tariff document response: ", get_tariff_document_response)
 
-get_contract_document_response = contract_documents_gateway_client.get_contract_document(account_id=open_credit_card_account_response.account.id)
+get_contract_document_response = contract_documents_gateway_client.get_contract_document(
+    account_id=open_credit_card_account_response.account.id)
 """
 Используем метод get_contract_document
 Получаем контракт об открытии кредитного счета.

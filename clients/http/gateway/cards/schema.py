@@ -25,6 +25,8 @@ class CardSchema(BaseModel):
     """
     Описание структуры карты.
     """
+    model_config = ConfigDict(populate_by_name=True)
+
     id: str
     pin: str
     cvv: str
