@@ -161,8 +161,6 @@ class OperationsGatewayHTTPClient(HTTPClient):
             accountId=account_id
         )
         response = self.make_top_up_operation_api(request)
-        # print(response.status_code)
-        # print(response.text)
         return MakeTopUpOperationResponseSchema.model_validate_json(response.text)
 
     def make_cashback_operation(self, card_id: str, account_id: str) -> MakeCashbackOperationResponseSchema:
@@ -189,8 +187,8 @@ class OperationsGatewayHTTPClient(HTTPClient):
         request = MakePurchaseOperationRequestSchema(
             # status="COMPLETED",
             # amount=55.77,
-            cardId=card_id,
             # category="taxi",
+            cardId=card_id,
             accountId=account_id
         )
         response = self.make_purchase_operation_api(request)
