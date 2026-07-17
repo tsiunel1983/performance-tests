@@ -1,20 +1,22 @@
 import grpc
 
 # gRPC-клиенты для соответствующих сервисов
+from contracts.services.gateway.users.users_gateway_service_pb2_grpc import UsersGatewayServiceStub
+from contracts.services.gateway.users.rpc_create_user_pb2 import CreateUserRequest, CreateUserResponse
+
 from contracts.services.gateway.accounts.accounts_gateway_service_pb2_grpc import AccountsGatewayServiceStub
 from contracts.services.gateway.accounts.rpc_open_credit_card_account_pb2 import (
     OpenCreditCardAccountRequest,
     OpenCreditCardAccountResponse
 )
 from contracts.services.gateway.operations.operations_gateway_service_pb2_grpc import OperationsGatewayServiceStub
-from contracts.services.gateway.operations.rpc_make_purchase_operation_pb2 import (
-    MakePurchaseOperationRequest,
-    MakePurchaseOperationResponse
-)
-from contracts.services.gateway.users.rpc_create_user_pb2 import CreateUserRequest, CreateUserResponse
-from contracts.services.gateway.users.users_gateway_service_pb2_grpc import UsersGatewayServiceStub
+from contracts.services.gateway.operations.rpc_make_top_up_operation_pb2 import (MakeTopUpOperationRequest,
+                                                                                 MakeTopUpOperationResponse)
+from contracts.services.gateway.operations.rpc_get_operation_receipt_pb2 import (GetOperationReceiptRequest,
+                                                                                 GetOperationReceiptResponse)
 # Enum со статусами операций
-from contracts.services.operations.operation_pb2 import OperationStatus
+from contracts.services.operations.operation_pb2 import OperationStatus, Operation
+
 # Фейковые данные для тестов
 from tools.fakers import fake
 
@@ -45,14 +47,18 @@ open_credit_card_account_response: OpenCreditCardAccountResponse = accounts_gate
 print('Open credit card account response:', open_credit_card_account_response)
 
 # 3. Создаём операцию покупки (платёж), привязанную к счёту и карте
-make_purchase_operation_request = MakePurchaseOperationRequest(
-    status=OperationStatus.OPERATION_STATUS_IN_PROGRESS,  # Статус операции (в процессе)
+make_top_up_operation_request = MakeTopUpOperationRequest(
+    status=OperationStatus.OPERATION_STATUS_COMPLETED,  # Статус операции (выполнена)
     amount=fake.amount(),  # Сумма покупки
     card_id=open_credit_card_account_response.account.cards[0].id,  # ID первой карты счёта
-    category=fake.category(),  # Категория, например "restaurant"
     account_id=open_credit_card_account_response.account.id  # ID счёта
 )
-make_purchase_operation_response: MakePurchaseOperationResponse = operations_gateway_service.MakePurchaseOperation(
-    make_purchase_operation_request
-)
-print('Make purchase operation response:', make_purchase_operation_response)
+make_top_up_operation_response: MakeTopUpOperationResponse = operations_gateway_service.MakeTopUpOperation(
+    make_top_up_operation_request)
+print('Make purchase operation response:', make_top_up_operation_response)
+
+# 4. Получаем чек операции
+get_operation_receipt_request = GetOperationReceiptRequest(operation_id=make_top_up_operation_response.operation.id)
+get_operation_receipt_response: GetOperationReceiptResponse = operations_gateway_service.GetOperationReceipt(
+    get_operation_receipt_request)
+print('Get operation receipt response:', get_operation_receipt_response)
