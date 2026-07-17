@@ -1,5 +1,5 @@
 import grpc
-
+  
 from contracts.services.gateway.users.rpc_create_user_pb2 import CreateUserRequest, CreateUserResponse
 from contracts.services.gateway.users.users_gateway_service_pb2_grpc import UsersGatewayServiceStub
 from contracts.services.gateway.accounts.accounts_gateway_service_pb2_grpc import AccountsGatewayServiceStub

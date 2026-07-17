@@ -55,7 +55,7 @@ class _OperationStatusEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper
     OPERATION_STATUS_COMPLETED: _OperationStatus.ValueType  # 2
     OPERATION_STATUS_FAILED: _OperationStatus.ValueType  # 3
 
-class OperationStatus(_OperationStatus, metaclass=_OperationStatusEnumTypeWrapper): ...
+class  OperationStatus(_OperationStatus, metaclass=_OperationStatusEnumTypeWrapper): ...
 
 OPERATION_STATUS_UNSPECIFIED: OperationStatus.ValueType  # 0
 OPERATION_STATUS_IN_PROGRESS: OperationStatus.ValueType  # 1
