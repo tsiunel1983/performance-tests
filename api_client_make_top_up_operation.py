@@ -9,7 +9,7 @@ operations_gateway_client = build_operations_gateway_http_client()
 create_user_response = users_gateway_client.create_user()
 """
 Используем метод create_user
-Создаем пользователя
+Создаем пользователя.
 """
 print('Create user response:', create_user_response)
 
