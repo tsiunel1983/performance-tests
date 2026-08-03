@@ -1,5 +1,6 @@
-import httpx
 import time
+
+import httpx
 
 client = httpx.Client(
     base_url="http://localhost:8003",

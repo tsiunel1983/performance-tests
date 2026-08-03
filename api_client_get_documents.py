@@ -1,7 +1,7 @@
 from api_client_issue_physical_card import accounts_gateway_client
 from clients.http.gateway.cards.client import build_cards_gateway_http_client
-from clients.http.gateway.users.client import build_users_gateway_http_client
 from clients.http.gateway.documents.client import build_documents_gateway_http_client
+from clients.http.gateway.users.client import build_users_gateway_http_client
 
 users_gateway_client = build_users_gateway_http_client()
 cards_gateway_client = build_cards_gateway_http_client()

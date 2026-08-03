@@ -1,6 +1,8 @@
 # server.py
-import grpc  # Библиотека gRPC
 from concurrent import futures  # Для создания пула потоков
+
+import grpc  # Библиотека gRPC
+
 import greeting_pb2
 import greeting_pb2_grpc
 

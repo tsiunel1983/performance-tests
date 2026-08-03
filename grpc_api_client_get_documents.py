@@ -1,7 +1,7 @@
-from grpc_api_client_issue_physical_card import accounts_gateway_client
 from clients.grpc.gateway.cards.client import build_cards_gateway_grpc_client
-from clients.grpc.gateway.users.client import build_users_gateway_grpc_client
 from clients.grpc.gateway.documents.client import build_documents_gateway_grpc_client
+from clients.grpc.gateway.users.client import build_users_gateway_grpc_client
+from grpc_api_client_issue_physical_card import accounts_gateway_client
 
 users_gateway_client = build_users_gateway_grpc_client()
 cards_gateway_client = build_cards_gateway_grpc_client()

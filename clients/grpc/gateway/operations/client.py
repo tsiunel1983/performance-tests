@@ -2,50 +2,48 @@ from grpc import Channel
 from locust.env import Environment  # Импорт окружения Locust
 
 from clients.grpc.client import GRPCClient
-from clients.grpc.gateway.client import build_gateway_grpc_client
+from clients.grpc.gateway.client import (
+    build_gateway_grpc_client,
+    build_gateway_locust_grpc_client,  # Импорт билдера для нагрузочного тестирования
+)
 from contracts.services.gateway.operations.operations_gateway_service_pb2_grpc import OperationsGatewayServiceStub
 from contracts.services.gateway.operations.rpc_get_operation_pb2 import GetOperationRequest, GetOperationResponse
 from contracts.services.gateway.operations.rpc_get_operation_receipt_pb2 import (
     GetOperationReceiptRequest,
-    GetOperationReceiptResponse
-)
-from clients.grpc.client import GRPCClient
-from clients.grpc.gateway.client import (
-    build_gateway_grpc_client,
-    build_gateway_locust_grpc_client  # Импорт билдера для нагрузочного тестирования
+    GetOperationReceiptResponse,
 )
 from contracts.services.gateway.operations.rpc_get_operations_pb2 import GetOperationsRequest, GetOperationsResponse
 from contracts.services.gateway.operations.rpc_get_operations_summary_pb2 import (
     GetOperationsSummaryRequest,
-    GetOperationsSummaryResponse
+    GetOperationsSummaryResponse,
 )
 from contracts.services.gateway.operations.rpc_make_bill_payment_operation_pb2 import (
     MakeBillPaymentOperationRequest,
-    MakeBillPaymentOperationResponse
+    MakeBillPaymentOperationResponse,
 )
 from contracts.services.gateway.operations.rpc_make_cash_withdrawal_operation_pb2 import (
     MakeCashWithdrawalOperationRequest,
-    MakeCashWithdrawalOperationResponse
+    MakeCashWithdrawalOperationResponse,
 )
 from contracts.services.gateway.operations.rpc_make_cashback_operation_pb2 import (
     MakeCashbackOperationRequest,
-    MakeCashbackOperationResponse
+    MakeCashbackOperationResponse,
 )
 from contracts.services.gateway.operations.rpc_make_fee_operation_pb2 import (
     MakeFeeOperationRequest,
-    MakeFeeOperationResponse
+    MakeFeeOperationResponse,
 )
 from contracts.services.gateway.operations.rpc_make_purchase_operation_pb2 import (
     MakePurchaseOperationRequest,
-    MakePurchaseOperationResponse
+    MakePurchaseOperationResponse,
 )
 from contracts.services.gateway.operations.rpc_make_top_up_operation_pb2 import (
     MakeTopUpOperationRequest,
-    MakeTopUpOperationResponse
+    MakeTopUpOperationResponse,
 )
 from contracts.services.gateway.operations.rpc_make_transfer_operation_pb2 import (
     MakeTransferOperationRequest,
-    MakeTransferOperationResponse
+    MakeTransferOperationResponse,
 )
 from contracts.services.operations.operation_pb2 import OperationStatus
 from tools.fakers import fake

@@ -1,5 +1,6 @@
-import httpx
 import time
+
+import httpx
 
 create_user_payload = {
     "email": f" user.{time.time()}@example.com",

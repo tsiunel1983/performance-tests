@@ -1,6 +1,6 @@
 import time
 
-from httpx import Request, Response, HTTPStatusError, HTTPError
+from httpx import HTTPError, HTTPStatusError, Request, Response
 from locust.env import Environment
 
 

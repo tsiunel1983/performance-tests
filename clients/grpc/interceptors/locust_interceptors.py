@@ -1,4 +1,5 @@
 import time
+
 from grpc import RpcError, UnaryUnaryClientInterceptor
 from locust.env import Environment
 

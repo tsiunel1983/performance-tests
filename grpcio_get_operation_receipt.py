@@ -1,21 +1,26 @@
 import grpc
 
-# gRPC-клиенты для соответствующих сервисов
-from contracts.services.gateway.users.users_gateway_service_pb2_grpc import UsersGatewayServiceStub
-from contracts.services.gateway.users.rpc_create_user_pb2 import CreateUserRequest, CreateUserResponse
-
 from contracts.services.gateway.accounts.accounts_gateway_service_pb2_grpc import AccountsGatewayServiceStub
 from contracts.services.gateway.accounts.rpc_open_credit_card_account_pb2 import (
     OpenCreditCardAccountRequest,
-    OpenCreditCardAccountResponse
+    OpenCreditCardAccountResponse,
 )
 from contracts.services.gateway.operations.operations_gateway_service_pb2_grpc import OperationsGatewayServiceStub
-from contracts.services.gateway.operations.rpc_make_top_up_operation_pb2 import (MakeTopUpOperationRequest,
-                                                                                 MakeTopUpOperationResponse)
-from contracts.services.gateway.operations.rpc_get_operation_receipt_pb2 import (GetOperationReceiptRequest,
-                                                                                 GetOperationReceiptResponse)
+from contracts.services.gateway.operations.rpc_get_operation_receipt_pb2 import (
+    GetOperationReceiptRequest,
+    GetOperationReceiptResponse,
+)
+from contracts.services.gateway.operations.rpc_make_top_up_operation_pb2 import (
+    MakeTopUpOperationRequest,
+    MakeTopUpOperationResponse,
+)
+from contracts.services.gateway.users.rpc_create_user_pb2 import CreateUserRequest, CreateUserResponse
+
+# gRPC-клиенты для соответствующих сервисов
+from contracts.services.gateway.users.users_gateway_service_pb2_grpc import UsersGatewayServiceStub
+
 # Enum со статусами операций
-from contracts.services.operations.operation_pb2 import OperationStatus, Operation
+from contracts.services.operations.operation_pb2 import OperationStatus
 
 # Фейковые данные для тестов
 from tools.fakers import fake

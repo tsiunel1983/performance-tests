@@ -1,6 +1,6 @@
 from typing import Any, TypedDict
 
-from httpx import Client, Response, QueryParams, URL
+from httpx import URL, Client, QueryParams, Response
 
 
 # Тип расширений, которые можно передать в запрос

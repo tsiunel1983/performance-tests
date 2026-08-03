@@ -1,4 +1,4 @@
-from pydantic import BaseModel, Field, HttpUrl, EmailStr, ValidationError
+from pydantic import BaseModel, EmailStr, Field, ValidationError
 
 
 class UserSchema(BaseModel):

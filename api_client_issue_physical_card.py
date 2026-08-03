@@ -1,6 +1,6 @@
-from clients.http.gateway.users.client import build_users_gateway_http_client
-from clients.http.gateway.cards.client import build_cards_gateway_http_client
 from clients.http.gateway.accounts.client import build_accounts_gateway_http_client
+from clients.http.gateway.cards.client import build_cards_gateway_http_client
+from clients.http.gateway.users.client import build_users_gateway_http_client
 
 users_gateway_client = build_users_gateway_http_client()
 cards_gateway_client = build_cards_gateway_http_client()

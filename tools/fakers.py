@@ -4,6 +4,7 @@ from faker import Faker
 from faker.providers.python import TEnum
 from google.protobuf.internal.enum_type_wrapper import EnumTypeWrapper
 
+
 class Fake:
     """
     Класс для генерации случайных тестовых данных с использованием библиотеки Faker.

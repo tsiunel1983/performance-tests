@@ -1,6 +1,7 @@
 import uuid
 from datetime import date
-from pydantic import BaseModel, Field, HttpUrl, EmailStr, ValidationError
+
+from pydantic import BaseModel, EmailStr, Field, HttpUrl, ValidationError
 
 
 # Добавили модель DocumentSchema

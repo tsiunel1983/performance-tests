@@ -1,5 +1,6 @@
 from locust import User, between, task
-from clients.http.gateway.accounts.client import AccountsGatewayHTTPClient , build_accounts_gateway_locust_http_client
+
+from clients.http.gateway.accounts.client import AccountsGatewayHTTPClient, build_accounts_gateway_locust_http_client
 from clients.http.gateway.users.client import UsersGatewayHTTPClient, build_users_gateway_locust_http_client
 from clients.http.gateway.users.schema import CreateUserResponseSchema
 

@@ -5,7 +5,7 @@ from locust.env import Environment  # Импорт окружения Locust д�
 
 from clients.http.event_hooks.locust_event_hook import (
     locust_request_event_hook,  # Хук для отслеживания начала запроса
-    locust_response_event_hook  # Хук для сбора метрик по завершении запроса
+    locust_response_event_hook,  # Хук для сбора метрик по завершении запроса
 )
 
 

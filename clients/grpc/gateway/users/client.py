@@ -4,7 +4,7 @@ from locust.env import Environment  # Импорт окружения Locust
 from clients.grpc.client import GRPCClient
 from clients.grpc.gateway.client import (
     build_gateway_grpc_client,
-    build_gateway_locust_grpc_client  # Импорт билдера для нагрузочного тестирования
+    build_gateway_locust_grpc_client,  # Импорт билдера для нагрузочного тестирования
 )
 from contracts.services.gateway.users.rpc_create_user_pb2 import CreateUserRequest, CreateUserResponse
 from contracts.services.gateway.users.rpc_get_user_pb2 import GetUserRequest, GetUserResponse

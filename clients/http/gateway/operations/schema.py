@@ -1,5 +1,7 @@
-from pydantic import BaseModel, Field, ConfigDict
 from enum import StrEnum
+
+from pydantic import BaseModel, ConfigDict, Field
+
 from tools.fakers import fake
 
 

@@ -4,25 +4,25 @@ from locust.env import Environment  # Импорт окружения Locust
 from clients.grpc.client import GRPCClient
 from clients.grpc.gateway.client import (
     build_gateway_grpc_client,
-    build_gateway_locust_grpc_client  # Импорт билдера для нагрузочного тестирования
+    build_gateway_locust_grpc_client,  # Импорт билдера для нагрузочного тестирования
 )
 from contracts.services.gateway.accounts.accounts_gateway_service_pb2_grpc import AccountsGatewayServiceStub
 from contracts.services.gateway.accounts.rpc_get_accounts_pb2 import GetAccountsRequest, GetAccountsResponse
 from contracts.services.gateway.accounts.rpc_open_credit_card_account_pb2 import (
     OpenCreditCardAccountRequest,
-    OpenCreditCardAccountResponse
+    OpenCreditCardAccountResponse,
 )
 from contracts.services.gateway.accounts.rpc_open_debit_card_account_pb2 import (
     OpenDebitCardAccountRequest,
-    OpenDebitCardAccountResponse
+    OpenDebitCardAccountResponse,
 )
 from contracts.services.gateway.accounts.rpc_open_deposit_account_pb2 import (
     OpenDepositAccountRequest,
-    OpenDepositAccountResponse
+    OpenDepositAccountResponse,
 )
 from contracts.services.gateway.accounts.rpc_open_savings_account_pb2 import (
     OpenSavingsAccountRequest,
-    OpenSavingsAccountResponse
+    OpenSavingsAccountResponse,
 )
 
 

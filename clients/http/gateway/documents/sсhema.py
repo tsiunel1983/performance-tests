@@ -1,4 +1,5 @@
-from pydantic import BaseModel, Field, ConfigDict, EmailStr
+from pydantic import BaseModel
+
 
 class TariffSchema(BaseModel):
     """

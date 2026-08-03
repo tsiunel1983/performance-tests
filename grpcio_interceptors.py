@@ -1,7 +1,8 @@
 import grpc
 
 from contracts.services.gateway.users.rpc_get_user_pb2 import GetUserRequest
-from contracts.services.gateway.users.users_gateway_service_pb2_grpc  import UsersGatewayServiceStub
+from contracts.services.gateway.users.users_gateway_service_pb2_grpc import UsersGatewayServiceStub
+
 
 class SimpleLoggingInterceptor(grpc.UnaryUnaryClientInterceptor):
     def intercept_unary_unary(self, continuation, client_call_details, request):

@@ -1,29 +1,29 @@
-from httpx import Response, QueryParams
+from httpx import QueryParams, Response
 from locust.env import Environment
 
 from clients.http.client import HTTPClient, HTTPClientExtensions
 from clients.http.gateway.client import build_gateway_http_client, build_gateway_locust_http_client
 from clients.http.gateway.operations.schema import (
-    GetOperationResponseSchema,
     GetOperationReceiptResponseSchema,
+    GetOperationResponseSchema,
     GetOperationsQuerySchema,
     GetOperationsResponseSchema,
     GetOperationsSummaryQuerySchema,
     GetOperationsSummaryResponseSchema,
-    MakeFeeOperationRequestSchema,
-    MakeFeeOperationResponseSchema,
-    MakeTopUpOperationRequestSchema,
-    MakeTopUpOperationResponseSchema,
-    MakeCashbackOperationRequestSchema,
-    MakeCashbackOperationResponseSchema,
-    MakeTransferOperationRequestSchema,
-    MakeTransferOperationResponseSchema,
-    MakePurchaseOperationRequestSchema,
-    MakePurchaseOperationResponseSchema,
     MakeBillPaymentOperationRequestSchema,
     MakeBillPaymentOperationResponseSchema,
+    MakeCashbackOperationRequestSchema,
+    MakeCashbackOperationResponseSchema,
     MakeCashWithdrawalOperationRequestSchema,
-    MakeCashWithdrawalOperationResponseSchema
+    MakeCashWithdrawalOperationResponseSchema,
+    MakeFeeOperationRequestSchema,
+    MakeFeeOperationResponseSchema,
+    MakePurchaseOperationRequestSchema,
+    MakePurchaseOperationResponseSchema,
+    MakeTopUpOperationRequestSchema,
+    MakeTopUpOperationResponseSchema,
+    MakeTransferOperationRequestSchema,
+    MakeTransferOperationResponseSchema,
 )
 
 
