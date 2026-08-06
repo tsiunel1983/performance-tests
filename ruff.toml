@@ -1,23 +1,16 @@
 line-length = 120
 target-version = "py312"
 
-[lint]
-select = ["E", "F", "I", "B"]
-
-ignore = [
-    "E501",
-]
 exclude = [
-    ".venv",
-    "__pycache__",
-
-    "grpcio_*.py",
-    "httpx_*.py",
-    "pydantic_*.py",
-    "main.py",
-]
-extend-exclude = [
     ".venv",
     "**/__pycache__",
     "contracts",
+    "**/grpcio_*.py",
+    "**/httpx_*.py",
+    "**/pydantic_*.py",
+    "main.py",
 ]
+
+[lint]
+select = ["E", "F", "I", "B"]
+ignore = ["E501"]
