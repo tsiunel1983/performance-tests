@@ -45,7 +45,7 @@ class GetAccountsTaskSet(GatewayGRPCTaskSet):
         )
 
 
-class GetDocumentsScenarioUser(LocustBaseUser):
+class GetAccountsScenarioUser(LocustBaseUser):
     """
     Пользователь Locust, исполняющий последовательный сценарий получения аккаунта.
     """
