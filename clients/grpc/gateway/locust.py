@@ -1,15 +1,12 @@
-from locust import TaskSet, SequentialTaskSet
+from locust import SequentialTaskSet, TaskSet
 
 # Импортируем типы и билдеры для построения gRPC API клиентов
 from clients.grpc.gateway.accounts.client import AccountsGatewayGRPCClient, build_accounts_gateway_locust_grpc_client
 from clients.grpc.gateway.cards.client import CardsGatewayGRPCClient, build_cards_gateway_locust_grpc_client
-from clients.grpc.gateway.documents.client import (
-    DocumentsGatewayGRPCClient,
-    build_documents_gateway_locust_grpc_client
-)
+from clients.grpc.gateway.documents.client import DocumentsGatewayGRPCClient, build_documents_gateway_locust_grpc_client
 from clients.grpc.gateway.operations.client import (
     OperationsGatewayGRPCClient,
-    build_operation_gateway_locust_grpc_client
+    build_operation_gateway_locust_grpc_client,
 )
 from clients.grpc.gateway.users.client import UsersGatewayGRPCClient, build_users_gateway_locust_grpc_client
 
