@@ -16,6 +16,7 @@ result = builder.build(
             credit_card_accounts=SeedAccountsPlan(
                 count=1,  # У каждого пользователя — один кредитный счёт
                 physical_cards=SeedCardsPlan(count=1),  # На счёте одна физическая карта
+                virtual_cards=SeedCardsPlan(count=1),  # На счёте одна виртуальная карта
             )
         ),
     )
