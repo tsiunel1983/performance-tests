@@ -1,6 +1,6 @@
 import os
 
-from seeds.sсhema.result import SeedsResult
+from seeds.schema.result import SeedsResult
 
 
 def save_seeds_result(result: SeedsResult, scenario: str):

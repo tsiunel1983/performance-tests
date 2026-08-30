@@ -30,12 +30,12 @@ from clients.http.gateway.users.client import (
     UsersGatewayHTTPClient,
     build_users_gateway_http_client,
 )
-from seeds.sсhema.plan import (
+from seeds.schema.plan import (
     SeedAccountsPlan,
     SeedsPlan,
     SeedUsersPlan,
 )
-from seeds.sсhema.result import (
+from seeds.schema.result import (
     SeedAccountResult,
     SeedCardResult,
     SeedOperationResult,
