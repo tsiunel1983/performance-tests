@@ -1,5 +1,5 @@
 from seeds.scenario import SeedsScenario
-from seeds.schema.plan import SeedAccountsPlan, SeedsPlan, SeedUsersPlan, SeedCardsPlan, SeedOperationsPlan
+from seeds.schema.plan import SeedAccountsPlan, SeedCardsPlan, SeedOperationsPlan, SeedsPlan, SeedUsersPlan
 
 
 class ExistingUserGetOperationsSeedsScenario(SeedsScenario):
