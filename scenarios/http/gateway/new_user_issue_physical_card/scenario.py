@@ -8,11 +8,11 @@ from tools.locust.user import LocustBaseUser
 
 
 # Класс сценария: описывает последовательный флоу нового пользователя
-class IssuePhysicalCardScenarioUser(GatewayHTTPSequentialTaskSet):
+class IssuePhysicalCardSequentialTaskSet(GatewayHTTPSequentialTaskSet):
     # Храним ответы от предыдущих шагов, чтобы использовать их в следующих задачах
     create_user_response: CreateUserResponseSchema | None = None
     open_debit_card_account_response: OpenDebitCardAccountResponseSchema | None = None
-    # issue_physical_card_response: IssuePhysicalCardResponseSchema | None = None
+    issue_physical_card_response: IssuePhysicalCardResponseSchema | None = None
 
     @task
     def create_user(self):
@@ -42,7 +42,7 @@ class IssuePhysicalCardScenarioUser(GatewayHTTPSequentialTaskSet):
             return
 
         # Выполняем операцию открытия физической карты
-        self = (
+        self.issue_physical_card_response = (
             self.cards_gateway_client.issue_physical_card(
                 user_id=self.create_user_response.user.id,
                 account_id=self.open_debit_card_account_response.account.id,
@@ -51,6 +51,6 @@ class IssuePhysicalCardScenarioUser(GatewayHTTPSequentialTaskSet):
 
 
 # Класс пользователя — связывает TaskSet со средой исполнения Locust
-class IssuePhysicalCardScenarioUserScenarioUser(LocustBaseUser):
+class IssuePhysicalCardScenarioUser(LocustBaseUser):
     # Назначаем сценарий, который будет выполняться этим пользователем
-    tasks = [IssuePhysicalCardScenarioUser]
+    tasks = [IssuePhysicalCardSequentialTaskSet]
