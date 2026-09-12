@@ -16,7 +16,7 @@ def init(environment: Environment, **kwargs):
 
     # Загружаем результат сидинга (из файла JSON)
     # environment.seeds = seeds_scenario.load() # код работает, но подчеркивает красным seeds
-    setattr(environment, "seeds", seeds_scenario.load())
+    setattr(environment, "seeds", seeds_scenario.load())  # noqa: B010
 
 
 # TaskSet — сценарий пользователя. Каждый виртуальный пользователь выполняет эти задачи
