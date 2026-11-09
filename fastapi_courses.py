@@ -1,137 +1,90 @@
 from fastapi import APIRouter, FastAPI, HTTPException, status
-from pydantic import BaseModel, EmailStr, RootModel
+from pydantic import BaseModel, RootModel
 
 app = FastAPI()
 
-# Создаём роутер с общим префиксом и тегом для Swagger
 courses_router = APIRouter(
-    prefix="/api/v1/courses",  # Добавляет /api/v1/courses ко всем путям в этом роутере
-    tags=["courses-service"]  # Группирует маршруты под тегом "courses-service" в документации
+    prefix="/api/v1/courses",
+    tags=["courses-service"]
 )
 
 
 class CourseIn(BaseModel):
-    """
-    Модель для приёма входных данных (создание и обновление курса).
-    """
-    email: EmailStr  # Валидация email-адреса
-    username: str  # Логин пользователя
+    title: str
+    max_score: int
+    min_score: int
+    description: str
 
 
 class CourseOut(CourseIn):
-    """
-    Модель для отдачи данных о курсе, включая его ID.
-    """
-    id: int  # Уникальный идентификатор пользователя
+    id: int
 
 
-class CourseStore(RootModel):
-    """
-    In-memory хранилище курсов вместо реальной БД.
-    """
-    root: list[CourseOut]  # Список всех пользователей
+class CoursesStore(RootModel):
+    root: list[CourseOut]
 
-    def find(self, user_id: int) -> CourseOut | None:
-        """
-        Находит пользователя по ID.
-        Возвращает UserOut или None, если не найден.
-        """
-        return next(filter(lambda user: user.id == user_id, self.root), None)
+    def find(self, course_id: int) -> CourseOut | None:
+        return next(filter(lambda course: course.id == course_id, self.root), None)
 
-    def create(self, user_in: CourseIn) -> CourseOut:
-        """
-        Создаёт нового пользователя, генерируя для него следующий ID.
-        """
-        user = CourseOut(id=len(self.root) + 1, **user_in.model_dump())
-        self.root.append(user)
-        return user
+    def create(self, course_in: CourseIn) -> CourseOut:
+        course = CourseOut(id=len(self.root) + 1, **course_in.model_dump())
+        self.root.append(course)
+        return course
 
-    def update(self, user_id: int, user_in: CourseIn) -> CourseOut:
-        """
-        Обновляет существующего пользователя по ID.
-        """
-        # Находим индекс существующей записи
-        index = next(index for index, user in enumerate(self.root) if user.id == user_id)
-        # Создаём новый объект с тем же ID и обновлёнными полями
-        updated = CourseOut(id=user_id, **user_in.model_dump())
-        # Заменяем в списке
+    def update(self, course_id: int, course_in: CourseIn) -> CourseOut:
+        index = next(index for index, course in enumerate(self.root) if course.id == course_id)
+        updated = CourseOut(id=course_id, **course_in.model_dump())
         self.root[index] = updated
         return updated
 
-    def delete(self, user_id: int) -> None:
-        """
-        Удаляет пользователя по ID, фильтруя список.
-        """
-        self.root = [user for user in self.root if user.id != user_id]
+    def delete(self, course_id: int) -> None:
+        self.root = [course for course in self.root if course.id != course_id]
 
 
-# Инициализируем хранилище пустым списком
-store = CourseStore(root=[])
+store = CoursesStore(root=[])
 
 
-@courses_router.get("/{user_id}", response_model=CourseOut)
-async def get_user(user_id: int):
-    """
-    GET /api/v1/course/{user_id}
-    Возвращает пользователя по ID или 404, если не найден.
-    """
-    if not (user := store.find(user_id)):
+@courses_router.get("/{course_id}", response_model=CourseOut)
+async def get_course(course_id: int):
+    if not (course := store.find(course_id)):
         raise HTTPException(
-            detail=f"Course with id {user_id} not found",
+            detail=f"Course with id {course_id} not found",
             status_code=status.HTTP_404_NOT_FOUND
         )
 
-    return user
+    return course
 
 
 @courses_router.get("", response_model=list[CourseOut])
-async def get_course():
-    """
-    GET /api/v1/course
-    Возвращает список всех пользователей.
-    """
+async def get_courses():
     return store.root
 
 
 @courses_router.post("", response_model=CourseOut, status_code=status.HTTP_201_CREATED)
-async def create_user(user: CourseIn):
-    """
-    POST /api/v1/course
-    Создаёт нового пользователя и возвращает его данные с ID.
-    """
-    return store.create(user)
+async def create_course(course: CourseIn):
+    return store.create(course)
 
 
-@courses_router.put("/{user_id}", response_model=CourseOut)
-async def update_user(user_id: int, user: CourseIn):
-    """
-    PUT /api/v1/course/{user_id}
-    Обновляет данные пользователя по ID или возвращает 404, если не существует.
-    """
-    if not store.find(user_id):
+@courses_router.put("/{course_id}", response_model=CourseOut)
+async def update_course(course_id: int, course: CourseIn):
+    if not store.find(course_id):
         raise HTTPException(
-            detail=f"Course with id {user_id} not found",
+            detail=f"Course with id {course_id} not found",
             status_code=status.HTTP_404_NOT_FOUND
         )
 
-    return store.update(user_id, user)
+    return store.update(course_id, course)
 
 
-@courses_router.delete("/{user_id}", status_code=status.HTTP_204_NO_CONTENT)
-async def delete_user(user_id: int):
-    """
-    DELETE /api/v1/course/{user_id}
-    Удаляет пользователя по ID или возвращает 404, если не существует.
-    """
-    if not store.find(user_id):
+@courses_router.delete("/{course_id}", status_code=status.HTTP_204_NO_CONTENT)
+async def delete_course(course_id: int):
+    if not store.find(course_id):
         raise HTTPException(
-            detail=f"Course with id {user_id} not found",
+            detail=f"Course with id {course_id} not found",
             status_code=status.HTTP_404_NOT_FOUND
         )
 
-    store.delete(user_id)
-    # При status_code=204 тело ответа пустое
+    store.delete(course_id)
 
 
-# Подключаем роутер к основному приложению
 app.include_router(courses_router)
