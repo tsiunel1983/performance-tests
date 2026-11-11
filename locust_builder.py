@@ -1,9 +1,9 @@
 # Импорт фабрики для создания сидера на gRPC-клиентах
-from seeds.builder import build_grpc_seeds_builder
-from seeds.dumps import load_seeds_result, save_seeds_result
-
 # Импорт схемы плана сида — описывает, какие сущности и в каком количестве нужно создать
 from seeds.sсhema.plan import SeedAccountsPlan, SeedCardsPlan, SeedsPlan, SeedUsersPlan
+
+from seeds.builder import build_grpc_seeds_builder
+from seeds.dumps import load_seeds_result, save_seeds_result
 
 # Шаг 1: создаём билдер с использованием gRPC-протокола
 builder = build_grpc_seeds_builder()

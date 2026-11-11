@@ -1,10 +1,10 @@
 import time
-
+from config import settings
 import httpx
 
 client = httpx.Client(
-    base_url="http://localhost:8003",
-    timeout=50,
+    base_url=settings.gateway_http_client.client_url,
+    timeout=settings.gateway_http_client.timeout,
     headers={"Authorization": "Bearer..."}
 )
 
